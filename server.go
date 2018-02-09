@@ -64,6 +64,12 @@ func main() {
 	api.HandleFunc("/categories/{id}", controller.FetchSingleCategory).Methods("GET")
 	api.HandleFunc("/categories/{id}", controller.UpdateCategory).Methods("PUT")
 
+	// todos routes
+	api.HandleFunc("/todos/", controller.FetchAllTodos).Methods("GET")
+	api.HandleFunc("/todos/", controller.CreateTodo).Methods("POST")
+	api.HandleFunc("/todos/{id}", controller.FetchSingleTodo).Methods("GET")
+	api.HandleFunc("/todos/{id}", controller.UpdateTodo).Methods("PUT")
+
 	// muxRouter uses Negroni handles the middleware for authorization
 	muxRouter := http.NewServeMux()
 	muxRouter.Handle("/", r)

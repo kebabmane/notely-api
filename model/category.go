@@ -93,9 +93,8 @@ func DeleteCategory(id string) ([]byte, error) {
 	db.First(&category, id)
 
 	if category.ID == 0 {
-		// w.WriteHeader(http.StatusNotFound)
-		// w.Write([]byte("Todo not found"))
-		// return
+		err := errors.New("Not found")
+		return []byte("category not found"), err
 	}
 
 	db.Delete(&category)

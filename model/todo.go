@@ -96,9 +96,8 @@ func DeleteTodo(id string) ([]byte, error) {
 	db.First(&todo, id)
 
 	if todo.ID == 0 {
-		//w.WriteHeader(http.StatusNotFound)
-		// w.Write([]byte("Todo not found"))
-		// return
+		err := errors.New("Not found")
+		return []byte("todo not found"), err
 	}
 
 	db.Delete(&todo)
