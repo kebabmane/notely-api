@@ -50,7 +50,6 @@ func main() {
 
 	// set up router
 	r := mux.NewRouter().StrictSlash(true)
-	r.HandleFunc("/", homeHandler)
 
 	r.HandleFunc("/health", controller.HealthFunction).Methods("GET")
 
@@ -92,10 +91,4 @@ func main() {
 	logger.Infof("server %v is started at %v\n", app.Version, address)
 	panic(http.ListenAndServe(address, handlers.RecoveryHandler()(n)))
 
-}
-
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("{\"message\": \"Hello world\"}"))
 }
