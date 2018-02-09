@@ -1,1 +1,1 @@
-web: ENV=PRODUCTION notly-api
+web: ENV=PRODUCTION notely-api
