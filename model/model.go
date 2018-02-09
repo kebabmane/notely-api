@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -53,7 +54,7 @@ var categories []Category = []Category{
 // Init migrates the database, in the future add a feature flag to know when to migrate
 func Init() {
 
-	dbString := "postgres://postgres:postgres@127.0.0.1:5432/turelogo?sslmode=disable"
+	dbString := os.Getenv("DATABASE_URL")
 
 	fmt.Println("Is this your DB string: ", dbString)
 	var err error
